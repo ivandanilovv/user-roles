@@ -23,8 +23,9 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function roles() {
-        return $this->belongsToMany(Role::class);
+    public function roles(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Role::class, 'user-roles', 'role_id', 'user_id');
     }
 
     /**

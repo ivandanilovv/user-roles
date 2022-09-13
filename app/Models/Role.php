@@ -10,4 +10,9 @@ class Role extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function users(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'user-roles', 'user_id', 'role_id');
+    }
 }
