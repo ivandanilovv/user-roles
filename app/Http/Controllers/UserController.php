@@ -11,7 +11,7 @@ class UserController extends Controller
     //
     public function index()
     {
-        $users = User::all();
+        $users = User::query()->with('roles')->get();
         return JsonResource::collection($users);
     }
 }
